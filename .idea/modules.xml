@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MSOfficeCreateInput.iml" filepath="$PROJECT_DIR$/MSOfficeCreateInput.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MSWordCreateInput.iml" filepath="$PROJECT_DIR$/MSWordCreateInput.iml" />
     </modules>
   </component>
 </project>

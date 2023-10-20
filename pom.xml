@@ -3,10 +3,27 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
 
-    <artifactId>MSOfficeCreateInput</artifactId>
+    <artifactId>MSWordCreateInput</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>MSOfficeCreateInput</name>
+    <name>MSWordCreateInput</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.21.0</version>
+        </dependency>
+    </dependencies>
         <build>
             <plugins>
             <plugin>
