@@ -2,6 +2,7 @@
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Table;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xwpf.usermodel.*;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
@@ -24,19 +25,8 @@ public class Main {
         XWPFParagraph title = document.createParagraph();
         title.setAlignment(ParagraphAlignment.LEFT);
 
-        //document.createTable().createRow().createCell().addParagraph();
-        XWPFTable table = document.createTable(5,7);
-        //table.setWidth("20.00%");
 
-        CTTblWidth widthRepr = table.getCTTbl().getTblPr().addNewTblW();
-        widthRepr.setType(STTblWidth.AUTO);
-        widthRepr.setW("20.00%");
-        table.getRows().get(3).getCell(4).setText("3/4");
-        //table.getRow(2).getCell(1).setWidth("30");
 
-        //table.getRow(0).setHeight(20);
-        //table.set
-        //Cell cell = document.createTable()
 
         //XWPFRun - набор данных о выводе текста внутри параграфа.
         // Находится может только внутри параграфа, создается через вызов метода параграфа-родителя
@@ -47,12 +37,29 @@ public class Main {
         paraRun.setBold(true);
         paraRun.setFontFamily("Courier");
         paraRun.setFontSize(20);
+        //новая строка без смены параграфа
+        paraRun.addBreak();
+        paraRun.setText("ещё строка");
 
         //следующий параграф
         //т.к. XWPFRun не прописан, оформление будет по умолчанию
         document.createParagraph().createRun().setText("Второй параграф");
         document.createParagraph().createRun().setText("Третий параграф");
 
+        //document.createTable().createRow().createCell().addParagraph();
+        XWPFTable table = document.createTable(7,5);
+        table.setWidthType(TableWidthType.DXA);
+        table.setWidth("100.00%");
+        int wid = table.getRow(1).getCell(1).getWidth();
+        table.setWidth(wid);
+
+
+        //делает тоже самое по поводу ширины таблицы
+        //CTTblWidth widthRepr = table.getCTTbl().getTblPr().addNewTblW();
+        //widthRepr.setType(STTblWidth.PCT);
+        //widthRepr.setW("100.00%");//ширина таблицы во всю возможную ширину на странице
+        //table.getRows().get(3).getCell(4).setText("3/4");
+        //table.getRow(1).getCell(0).setWidth("20.0%");
 
         FileOutputStream out = new FileOutputStream(output);
         document.write(out);
